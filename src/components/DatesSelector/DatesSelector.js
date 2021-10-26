@@ -15,7 +15,7 @@ export default function DatesSelector() {
   return (
     <div>
       <div>
-        <label for="startDate">Initial Date</label>
+        <label htmlFor="startDate">Initial Date</label>
         <input
           type="date"
           value={startDate}
@@ -23,7 +23,7 @@ export default function DatesSelector() {
         ></input>
       </div>
       <div>
-        <label for="finalDate">Final Date</label>
+        <label htmlFor="finalDate">Final Date</label>
         <input
           type="date"
           value={finalDate}
