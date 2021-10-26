@@ -36,8 +36,8 @@ export default function BitcoinChartFetch() {
         label: "Usd",
         data: bitcoinUsd,
         fill: false,
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgba(255, 99, 132, 0.2)",
+        backgroundColor: "rgb(255,165,0)",
+        borderColor: "rgba(255,165,0.2)",
       },
     ],
   };
@@ -55,7 +55,7 @@ export default function BitcoinChartFetch() {
       setErrorText("");
       setChartRender(true);
     } else {
-      setErrorText("The start date has to be smaller than the final date");
+      setErrorText("The initial date has to be smaller than the final date");
       setChartRender(false);
     }
   };

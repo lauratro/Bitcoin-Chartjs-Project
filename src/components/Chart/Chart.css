@@ -1,5 +1,10 @@
+.externalContainer {
+  margin-top: 50px;
+}
 .chartContainer {
   margin-top: 50px;
-  width: 80%;
+  width: 90%;
+  padding: 10px;
   box-shadow: 5px 5px 11px 4px rgba(0, 0, 0, 0.59);
+  margin: 0 auto;
 }
