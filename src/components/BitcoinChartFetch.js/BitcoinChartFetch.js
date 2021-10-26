@@ -12,7 +12,7 @@ export default function BitcoinChartFetch() {
     let fetchBitcoinData = async () => {
       try {
         let response = await fetch(
-          "https://api.coindesk.com/v1/bpi/historical/close.json?start=2021-10-20&end=2021-10-22"
+          `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${finalDate}`
         );
         let data = await response.json();
         console.log("data", data.bpi);
@@ -25,7 +25,7 @@ export default function BitcoinChartFetch() {
       }
     };
     fetchBitcoinData();
-  }, []);
+  }, [startDate, finalDate]);
 
   const data = {
     labels: dateLabel,
