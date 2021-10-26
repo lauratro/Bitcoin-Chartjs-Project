@@ -1,0 +1,9 @@
+.errorText {
+  text-align: center;
+  margin: 10px;
+}
+.renderButton {
+  width: 100px;
+  margin: 0 auto;
+  padding: 10px;
+}

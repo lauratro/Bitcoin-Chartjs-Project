@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { VariablesContext } from "../../context/VariablesContext";
 import Chart from "../Chart/Chart";
+import "./BitcoinChartFetch.css";
 
 export default function BitcoinChartFetch() {
   const { startDate, setStartDate, finalDate, setFinalDate } =
@@ -60,9 +61,11 @@ export default function BitcoinChartFetch() {
   };
 
   return (
-    <div>
-      {errorText}
-      <button onClick={() => dateChecker()}>Render</button>
+    <div className="directCol">
+      <div className="textCentr errorText">{errorText}</div>
+      <button className="renderButton" onClick={() => dateChecker()}>
+        Render
+      </button>
       {chartRender && <Chart data={data} options={options} />}
     </div>
   );
