@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useState, useContext } from "react";
+import { VariablesContext } from "../../context/VariablesContext";
 import Chart from "../Chart/Chart";
 
 export default function BitcoinChartFetch() {
+  const { startDate, setStartDate, finalDate, setFinalDate } =
+    useContext(VariablesContext);
   const [chartData, setChartData] = useState({});
   const [dateLabel, setDateLabel] = useState([]);
   const [bitcoinUsd, setBitcoinUsd] = useState([]);
