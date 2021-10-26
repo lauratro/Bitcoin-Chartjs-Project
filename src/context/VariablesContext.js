@@ -1,16 +1,18 @@
 import React, { useState, createContext, useEffect } from "react";
 import { unstable_concurrentAct } from "react-dom/test-utils";
-
+//Initialization of the variables in the context
 const initContextVariables = {
   startDate: "",
   finalDate: "",
 };
 
 export const VariablesContext = createContext(initContextVariables);
+//Creation of the provider that will share the variables values through the components
 export const VariablesContextProvider = ({ children }) => {
   const [startDate, setStartDate] = useState(initContextVariables.startDate);
   const [finalDate, setFinalDate] = useState(initContextVariables.finalDate);
 
+  // Definition of the initial value of the Start Date
   useEffect(() => {
     let getCurrentDate = () => {
       let newDate = new Date();
@@ -23,8 +25,8 @@ export const VariablesContextProvider = ({ children }) => {
     setStartDate(getCurrentDate());
   }, []);
 
-  console.log(startDate);
-
+  console.log("s in context", startDate);
+  // Definition of the initial value of the Final Date (Start date + 10 days)
   useEffect(() => {
     let getInTenDaysDate = (n) => {
       let t = new Date();
