@@ -5,7 +5,7 @@ import Chart from "../Chart/Chart";
 export default function BitcoinChartFetch() {
   const { startDate, setStartDate, finalDate, setFinalDate } =
     useContext(VariablesContext);
-  const [chartData, setChartData] = useState({});
+
   const [dateLabel, setDateLabel] = useState([]);
   const [bitcoinUsd, setBitcoinUsd] = useState([]);
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function BitcoinChartFetch() {
 
   return (
     <div>
-      <Chart data={data} options={options} />
+      <Chart data={data} options={options} />}
     </div>
   );
 }
