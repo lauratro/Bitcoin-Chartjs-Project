@@ -1,4 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
+import { unstable_concurrentAct } from "react-dom/test-utils";
 
 const initContextVariables = {
   startDate: "",
@@ -24,6 +25,22 @@ export const VariablesContextProvider = ({ children }) => {
 
   console.log(startDate);
 
+  useEffect(() => {
+    let getInTenDaysDate = (n) => {
+      let t = new Date();
+      t.setDate(t.getDate() + n);
+      let dateInTen = t.getDate();
+      let month = t.getMonth() + 1;
+      let year = t.getFullYear();
+
+      return `${year}-${month < 10 ? `0${month}` : `${month}`}-${
+        dateInTen < 10 ? `0${dateInTen}` : `${dateInTen}`
+      }`;
+    };
+    setFinalDate(getInTenDaysDate(10));
+  }, []);
+
+  console.log("f in context", finalDate);
   return (
     <VariablesContext.Provider
       value={{
