@@ -22,13 +22,13 @@ export const VariablesContextProvider = ({ children }) => {
 
       return `${year}-${month < 10 ? `0${month}` : `${month}`}-${date}`;
     };
-    setStartDate(getCurrentDate());
+    setFinalDate(getCurrentDate());
   }, []);
 
   console.log("s in context", startDate);
   // Definition of the initial value of the Final Date (Start date + 10 days)
   useEffect(() => {
-    let getInTenDaysDate = (n) => {
+    let getTenDaysBeforeDate = (n) => {
       let t = new Date();
       t.setDate(t.getDate() + n);
       let dateInTen = t.getDate();
@@ -39,7 +39,7 @@ export const VariablesContextProvider = ({ children }) => {
         dateInTen < 10 ? `0${dateInTen}` : `${dateInTen}`
       }`;
     };
-    setFinalDate(getInTenDaysDate(10));
+    setStartDate(getTenDaysBeforeDate(-10));
   }, []);
 
   console.log("f in context", finalDate);
