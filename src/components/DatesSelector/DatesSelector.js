@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { VariablesContext } from "../../context/VariablesContext";
+import "./DatesSelector.css";
 
 export default function DatesSelector() {
   const { startDate, setStartDate, finalDate, setFinalDate } =
@@ -26,9 +27,11 @@ export default function DatesSelector() {
   console.log("start", startDate);
   console.log("final", finalDate);
   return (
-    <div>
-      <div>
-        <label htmlFor="startDate">Initial Date</label>
+    <div className="spaceAround container">
+      <div className=" directCol">
+        <label htmlFor="startDate" className="textCentr labelMarginBot">
+          Initial Date
+        </label>
         <input
           type="date"
           value={startDate}
@@ -36,8 +39,10 @@ export default function DatesSelector() {
           onChange={handleStartDateChange}
         ></input>
       </div>
-      <div>
-        <label htmlFor="finalDate">Final Date</label>
+      <div className=" directCol">
+        <label htmlFor="finalDate" className="textCentr labelMarginBot">
+          Final Date
+        </label>
         <input
           type="date"
           value={finalDate}
