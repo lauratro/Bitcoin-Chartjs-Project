@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
+
+import Chart from "../Chart/Chart";
 
 export default function BitcoinChartFetch() {
   const [chartData, setChartData] = useState({});
@@ -46,7 +47,7 @@ export default function BitcoinChartFetch() {
 
   return (
     <div>
-      <Line data={data} options={options} />
+      <Chart data={data} options={options} />
     </div>
   );
 }
