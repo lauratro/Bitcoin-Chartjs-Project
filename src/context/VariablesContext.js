@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { unstable_concurrentAct } from "react-dom/test-utils";
+
 //Initialization of the variables in the context
 const initContextVariables = {
   startDate: "",
