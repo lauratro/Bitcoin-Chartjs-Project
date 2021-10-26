@@ -6,7 +6,10 @@ export default function DatesSelector() {
     useContext(VariablesContext);
   return (
     <div>
-      <div></div>
+      <div>
+        <label for="startDate">Initial Date</label>
+        <input type="date" value={startDate}></input>
+      </div>
     </div>
   );
 }
