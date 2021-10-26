@@ -11,6 +11,10 @@
   font-family: "Roboto", sans-serif;
   text-align: center;
 }
+.hr {
+  max-width: 600px;
+  border-color: orange;
+}
 .containFlCentr {
   display: flex;
   justify-content: center;

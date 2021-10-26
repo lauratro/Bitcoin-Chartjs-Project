@@ -6,7 +6,8 @@ import BitcoinChartFetch from "./components/BitcoinChartFetch.js/BitcoinChartFet
 function App() {
   return (
     <div className="App">
-      <h1 className="title">Bitcoin Line Chart"</h1>
+      <h1 className="title">Bitcoin Line Chart</h1>
+      <hr className="hr"></hr>
       <DatesSelector />
       <BitcoinChartFetch />
     </div>
