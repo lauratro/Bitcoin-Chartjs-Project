@@ -1,9 +1,22 @@
 import React, { useState, useContext } from "react";
+import { useEffect } from "react/cjs/react.development";
 import { VariablesContext } from "../../context/VariablesContext";
 
 export default function DatesSelector() {
   const { startDate, setStartDate, finalDate, setFinalDate } =
     useContext(VariablesContext);
+  const [currentDate, setCurrentDate] = useState("");
+  let getCurrentDate = () => {
+    let newDate = new Date();
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+
+    return `${year}-${month < 10 ? `0${month}` : `${month}`}-${date}`;
+  };
+  useEffect(() => {
+    setCurrentDate(getCurrentDate());
+  }, []);
   const handleStartDateChange = (e) => {
     setStartDate(e.target.value);
   };
@@ -19,6 +32,7 @@ export default function DatesSelector() {
         <input
           type="date"
           value={startDate}
+          max={currentDate}
           onChange={handleStartDateChange}
         ></input>
       </div>
@@ -27,6 +41,8 @@ export default function DatesSelector() {
         <input
           type="date"
           value={finalDate}
+          max={currentDate}
+          min={startDate}
           onChange={handleFinalDateChange}
         ></input>
       </div>
