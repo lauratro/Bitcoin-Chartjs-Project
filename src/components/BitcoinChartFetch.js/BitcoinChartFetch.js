@@ -8,24 +8,25 @@ export default function BitcoinChartFetch() {
 
   const [dateLabel, setDateLabel] = useState([]);
   const [bitcoinUsd, setBitcoinUsd] = useState([]);
-  useEffect(() => {
-    let fetchBitcoinData = async () => {
-      try {
-        let response = await fetch(
-          `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${finalDate}`
-        );
-        let data = await response.json();
-        console.log("data", data.bpi);
-        let labels = await setDateLabel(Object.keys(data.bpi));
-        let bitcoin = await setBitcoinUsd(Object.values(data.bpi));
-        console.log("key", dateLabel);
-        console.log("coin", bitcoinUsd);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchBitcoinData();
-  }, [startDate, finalDate]);
+  const [errorText, setErrorText] = useState("");
+  const [chartRender, setChartRender] = useState(true);
+  // useEffect(() => {
+  let fetchBitcoinData = async () => {
+    try {
+      let response = await fetch(
+        `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${finalDate}`
+      );
+      let data = await response.json();
+      console.log("data", data.bpi);
+      let labels = await setDateLabel(Object.keys(data.bpi));
+      let bitcoin = await setBitcoinUsd(Object.values(data.bpi));
+      console.log("key", dateLabel);
+      console.log("coin", bitcoinUsd);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  // }, [startDate, finalDate]);
 
   const data = {
     labels: dateLabel,
@@ -47,9 +48,22 @@ export default function BitcoinChartFetch() {
     },
   };
 
+  let dateChecker = async () => {
+    if (finalDate > startDate) {
+      fetchBitcoinData();
+      setErrorText("");
+      setChartRender(true);
+    } else {
+      setErrorText("The start date has to be smaller than the final date");
+      setChartRender(false);
+    }
+  };
+
   return (
     <div>
-      <Chart data={data} options={options} />}
+      {errorText}
+      <button onClick={() => dateChecker()}>Render</button>
+      {chartRender && <Chart data={data} options={options} />}
     </div>
   );
 }
