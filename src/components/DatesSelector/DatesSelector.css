@@ -4,3 +4,8 @@
 .labelMarginBot {
   margin-bottom: 5px;
 }
+.dateLabelBorder {
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 11px 4px rgba(0, 0, 0, 0.59);
+}

@@ -28,7 +28,7 @@ export default function DatesSelector() {
   console.log("final", finalDate);
   return (
     <div className="spaceAround container">
-      <div className=" directCol">
+      <div className=" directCol dateLabelBorder ">
         <label htmlFor="startDate" className="textCentr labelMarginBot">
           Initial Date
         </label>
@@ -39,7 +39,7 @@ export default function DatesSelector() {
           onChange={handleStartDateChange}
         ></input>
       </div>
-      <div className=" directCol">
+      <div className=" directCol dateLabelBorder ">
         <label htmlFor="finalDate" className="textCentr labelMarginBot">
           Final Date
         </label>
