@@ -27,7 +27,6 @@ export const VariablesContextProvider = ({ children }) => {
     getCurrentDate();
   }, []);
 
-  console.log("s in context", startDate);
   // Definition of the initial value of the Start Date (Final date - 10 days)
   useEffect(() => {
     let getTenDaysBeforeDate = (n) => {
@@ -44,7 +43,6 @@ export const VariablesContextProvider = ({ children }) => {
     setStartDate(getTenDaysBeforeDate(-10));
   }, []);
 
-  console.log("f in context", finalDate);
   return (
     <VariablesContext.Provider
       value={{

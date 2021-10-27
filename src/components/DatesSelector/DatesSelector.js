@@ -12,8 +12,7 @@ export default function DatesSelector() {
   const handleFinalDateChange = (e) => {
     setFinalDate(e.target.value);
   };
-  console.log("start", startDate);
-  console.log("final", finalDate);
+
   return (
     <div className="spaceAround container">
       <div className=" directCol dateLabel ">
