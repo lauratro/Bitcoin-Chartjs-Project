@@ -4,6 +4,7 @@ import React, { useState, createContext, useEffect } from "react";
 const initContextVariables = {
   startDate: "",
   finalDate: "",
+  today: "",
 };
 
 export const VariablesContext = createContext(initContextVariables);
@@ -11,32 +12,33 @@ export const VariablesContext = createContext(initContextVariables);
 export const VariablesContextProvider = ({ children }) => {
   const [startDate, setStartDate] = useState(initContextVariables.startDate);
   const [finalDate, setFinalDate] = useState(initContextVariables.finalDate);
+  const [today, setToday] = useState(initContextVariables.today);
 
-  // Definition of the initial value of the Start Date
+  // Definition of the initial value of the Final Date
+  let getCurrentDate = () => {
+    let newDate = new Date();
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+    setToday(`${year}-${month < 10 ? `0${month}` : `${month}`}-${date}`);
+    setFinalDate(`${year}-${month < 10 ? `0${month}` : `${month}`}-${date}`);
+  };
   useEffect(() => {
-    let getCurrentDate = () => {
-      let newDate = new Date();
-      let date = newDate.getDate();
-      let month = newDate.getMonth() + 1;
-      let year = newDate.getFullYear();
-
-      return `${year}-${month < 10 ? `0${month}` : `${month}`}-${date}`;
-    };
-    setFinalDate(getCurrentDate());
+    getCurrentDate();
   }, []);
 
   console.log("s in context", startDate);
-  // Definition of the initial value of the Final Date (Start date + 10 days)
+  // Definition of the initial value of the Start Date (Final date - 10 days)
   useEffect(() => {
     let getTenDaysBeforeDate = (n) => {
       let t = new Date();
       t.setDate(t.getDate() + n);
-      let dateInTen = t.getDate();
+      let dateMinTen = t.getDate();
       let month = t.getMonth() + 1;
       let year = t.getFullYear();
 
       return `${year}-${month < 10 ? `0${month}` : `${month}`}-${
-        dateInTen < 10 ? `0${dateInTen}` : `${dateInTen}`
+        dateMinTen < 10 ? `0${dateMinTen}` : `${dateMinTen}`
       }`;
     };
     setStartDate(getTenDaysBeforeDate(-10));
@@ -50,6 +52,7 @@ export const VariablesContextProvider = ({ children }) => {
         setStartDate,
         finalDate,
         setFinalDate,
+        today,
       }}
     >
       {children}
