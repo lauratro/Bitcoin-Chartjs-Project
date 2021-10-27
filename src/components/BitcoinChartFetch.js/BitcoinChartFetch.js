@@ -11,7 +11,7 @@ export default function BitcoinChartFetch() {
   const [bitcoinUsd, setBitcoinUsd] = useState([]);
   const [errorText, setErrorText] = useState("");
   const [chartRender, setChartRender] = useState(true);
-  // useEffect(() => {
+
   let fetchBitcoinData = async () => {
     try {
       let response = await fetch(
@@ -27,7 +27,6 @@ export default function BitcoinChartFetch() {
       console.log(err);
     }
   };
-  // }, [startDate, finalDate]);
 
   const data = {
     labels: dateLabel,
