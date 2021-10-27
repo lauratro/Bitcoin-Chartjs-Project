@@ -1,23 +1,11 @@
-import React, { useState, useContext } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { useContext } from "react";
 import { VariablesContext } from "../../context/VariablesContext";
 import "./DatesSelector.css";
 
 export default function DatesSelector() {
-  const { startDate, setStartDate, finalDate, setFinalDate } =
+  const { startDate, setStartDate, finalDate, setFinalDate, today } =
     useContext(VariablesContext);
-  const [currentDate, setCurrentDate] = useState("");
-  let getCurrentDate = () => {
-    let newDate = new Date();
-    let date = newDate.getDate();
-    let month = newDate.getMonth() + 1;
-    let year = newDate.getFullYear();
 
-    return `${year}-${month < 10 ? `0${month}` : `${month}`}-${date}`;
-  };
-  useEffect(() => {
-    setCurrentDate(getCurrentDate());
-  }, []);
   const handleStartDateChange = (e) => {
     setStartDate(e.target.value);
   };
@@ -28,25 +16,27 @@ export default function DatesSelector() {
   console.log("final", finalDate);
   return (
     <div className="spaceAround container">
-      <div className=" directCol dateLabelBorder ">
+      <div className=" directCol dateLabel ">
         <label htmlFor="startDate" className="textCentr labelMarginBot">
           Initial Date
         </label>
         <input
           type="date"
+          className="dateInput"
           value={startDate}
-          max={currentDate}
+          max={finalDate}
           onChange={handleStartDateChange}
         ></input>
       </div>
-      <div className=" directCol dateLabelBorder ">
+      <div className=" directCol dateLabel">
         <label htmlFor="finalDate" className="textCentr labelMarginBot">
           Final Date
         </label>
         <input
           type="date"
+          className="dateInput"
           value={finalDate}
-          max={currentDate}
+          max={today}
           min={startDate}
           onChange={handleFinalDateChange}
         ></input>
