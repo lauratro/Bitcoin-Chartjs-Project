@@ -28,10 +28,10 @@ export default function BitcoinChartFetch() {
   function getBgColors() {
     let maxValue = Math.max.apply(this, bitcoinUsd);
 
-    let bg = bitcoinUsd.map((a) =>
+    let big = bitcoinUsd.map((a) =>
       a === maxValue ? "rgb(255,69,0)" : "rgb(255,165,0)"
     );
-    return bg;
+    return big;
   }
   const data = {
     labels: dateLabel,
