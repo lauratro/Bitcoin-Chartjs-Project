@@ -1,11 +1,10 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { VariablesContext } from "../../context/VariablesContext";
 import Chart from "../Chart/Chart";
 import "./BitcoinChartFetch.css";
 
 export default function BitcoinChartFetch() {
-  const { startDate, setStartDate, finalDate, setFinalDate } =
-    useContext(VariablesContext);
+  const { startDate, finalDate } = useContext(VariablesContext);
 
   const [dateLabel, setDateLabel] = useState([]);
   const [bitcoinUsd, setBitcoinUsd] = useState([]);
@@ -18,11 +17,9 @@ export default function BitcoinChartFetch() {
         `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startDate}&end=${finalDate}`
       );
       let data = await response.json();
-      console.log("data", data.bpi);
-      let labels = await setDateLabel(Object.keys(data.bpi));
-      let bitcoin = await setBitcoinUsd(Object.values(data.bpi));
-      console.log("key", dateLabel);
-      console.log("coin", bitcoinUsd);
+
+      setDateLabel(Object.keys(data.bpi));
+      setBitcoinUsd(Object.values(data.bpi));
     } catch (err) {
       console.log(err);
     }
@@ -47,8 +44,8 @@ export default function BitcoinChartFetch() {
       },
     },
   };
-
-  let dateChecker = async () => {
+  // The function checks that it won't be possible to select a startDate bigger than the final one
+  let dateChecker = () => {
     if (finalDate > startDate) {
       fetchBitcoinData();
       setErrorText("");
