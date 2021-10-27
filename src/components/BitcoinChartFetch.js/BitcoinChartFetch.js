@@ -25,6 +25,14 @@ export default function BitcoinChartFetch() {
     }
   };
 
+  function getBgColors() {
+    let maxValue = Math.max.apply(this, bitcoinUsd);
+
+    let bg = bitcoinUsd.map((a) =>
+      a === maxValue ? "rgb(255,69,0)" : "rgb(255,165,0)"
+    );
+    return bg;
+  }
   const data = {
     labels: dateLabel,
     datasets: [
@@ -32,8 +40,8 @@ export default function BitcoinChartFetch() {
         label: "Usd",
         data: bitcoinUsd,
         fill: false,
-        backgroundColor: "rgb(255,165,0)",
-        borderColor: "rgba(255,165,0.2)",
+        backgroundColor: getBgColors(),
+        borderColor: "rgba(255,165, 0, 0.2)",
       },
     ],
   };
