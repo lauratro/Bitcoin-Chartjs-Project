@@ -20,8 +20,12 @@ export const VariablesContextProvider = ({ children }) => {
     let date = newDate.getDate();
     let month = newDate.getMonth() + 1;
     let year = newDate.getFullYear();
-    setToday(`${year}-${month < 10 ? `0${month}` : `${month}`}-${date}`);
-    setFinalDate(`${year}-${month < 10 ? `0${month}` : `${month}`}-${date}`);
+    setToday(`${year}-${month < 10 ? `0${month}` : `${month}`}-${
+        date < 10 ? `0${date}` : `${date}`
+      }`);
+    setFinalDate(`${year}-${month < 10 ? `0${month}` : `${month}`}-${
+        date < 10 ? `0${date}` : `${date}`
+      }`);
   };
   useEffect(() => {
     getCurrentDate();
